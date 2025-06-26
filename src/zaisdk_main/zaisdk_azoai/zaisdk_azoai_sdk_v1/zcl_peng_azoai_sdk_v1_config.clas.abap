@@ -274,7 +274,7 @@ CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 *   TODO, TOBRAINSTORM : Should we control this with a flag?
     CASE _api_type.
       WHEN zif_peng_azoai_sdk_constants=>c_apitype-azure OR zif_peng_azoai_sdk_constants=>c_apitype-azure_ad.
-        IF NOT _api_base CS zif_peng_azoai_sdk_constants=>c_azure_openairesource.
+        IF NOT _api_base CS zif_peng_azoai_sdk_constants=>c_azure_openairesource AND NOT _api_base CS zif_peng_azoai_sdk_constants=>c_azure_cognitiveresource.
           RAISE EXCEPTION TYPE zcx_peng_azoai_sdk_exception
             EXPORTING
               textid = zcx_peng_azoai_sdk_exception=>invalid_api_base_url.
@@ -322,11 +322,11 @@ CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 * Mar 19, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *  Check if the version is supported. If not, raise an exception.
-    IF NOT line_exists( _t_versions_supported[ version_name = api_version ] ).
-      RAISE EXCEPTION TYPE zcx_peng_azoai_sdk_exception
-        EXPORTING
-          textid = zcx_peng_azoai_sdk_exception=>version_not_supported.
-    ENDIF.
+*    IF NOT line_exists( _t_versions_supported[ version_name = api_version ] ).
+*      RAISE EXCEPTION TYPE zcx_peng_azoai_sdk_exception
+*        EXPORTING
+*          textid = zcx_peng_azoai_sdk_exception=>version_not_supported.
+*    ENDIF.
 
 *   Set the API version value.
     _api_version = api_version.

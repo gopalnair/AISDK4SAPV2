@@ -176,77 +176,13 @@ CLASS zcl_peng_azoai_sdk_helper IMPLEMENTATION.
 *    TODO: At a later time, when additional versions are supported, this will be dynamically constructed.
 *    TODO: Get the below from a constant setting/config layer at some point.
 
-    CASE api_version.
-      WHEN
-            zif_peng_azoai_sdk_constants=>c_versions-v_2022_12_01.
+    IF api_type = zif_peng_azoai_sdk_constants=>c_apitype-azure OR api_type = zif_peng_azoai_sdk_constants=>c_apitype-azure_ad.
 
-        components = VALUE #(
-                               "SDK Core Component
-                               (    component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
-                                    component_class_name = 'ZCL_PENG_AZOAI_SDK_V1'
-                               )
+      CASE api_version.
+        WHEN
+              zif_peng_azoai_sdk_constants=>c_versions-v_2022_12_01.
 
-                               "Config Core Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-config
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_config'
-                               )
-
-                               "Model Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-model
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_model'
-                               )
-
-                               "Deployments Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-deployment
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_deploy'
-                               )
-
-                              "Files Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-file
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_file'
-                               )
-
-                               "FineTunes Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_finetune'
-                               )
-
-                               "Embeddings Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_embeding'
-                               )
-
-                               "Completions Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_complet'
-                               )
-
-                               "Chat Completions Worker Component - This is not supported in the version.
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_ai_sdk_chatcompl_base'
-                               )
-
-                           ).
-
-      WHEN zif_peng_azoai_sdk_constants=>c_versions-v_2023_03_15_preview.
-        components = VALUE #(
+          components = VALUE #(
                                  "SDK Core Component
                                  (    component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk
                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
@@ -302,89 +238,88 @@ CLASS zcl_peng_azoai_sdk_helper IMPLEMENTATION.
                                       component_class_name = 'zcl_peng_azoai_sdk_v1_complet'
                                  )
 
-                                 "Chat Completions Worker Component
+                                 "Chat Completions Worker Component - This is not supported in the version.
                                  (
                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions
                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                      component_class_name = 'zcl_peng_ai_sdk_v1_chatcomplet'
+                                      component_class_name = 'zcl_peng_ai_sdk_chatcompl_base'
                                  )
 
                              ).
 
-      WHEN
-            zif_peng_azoai_sdk_constants=>c_versions-v_2023_05_15 OR
-            zif_peng_azoai_sdk_constants=>c_versions-v_2023_06_01_preview OR
-            zif_peng_azoai_sdk_constants=>c_versions-v_2023_07_01_preview OR
-            zif_peng_azoai_sdk_constants=>c_versions-v_2023_08_01_preview.
+        WHEN zif_peng_azoai_sdk_constants=>c_versions-v_2023_03_15_preview.
+          components = VALUE #(
+                                   "SDK Core Component
+                                   (    component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
+                                        component_class_name = 'ZCL_PENG_AZOAI_SDK_V1'
+                                   )
 
-        components = VALUE #(
-                               "SDK Core Component
-                               (    component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
-                                    component_class_name = 'ZCL_PENG_AZOAI_SDK_V1'
-                               )
+                                   "Config Core Component
+                                   (
+                                        component_type = zif_peng_azoai_sdk_constants=>c_component_type-config
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
+                                        component_class_name = 'zcl_peng_azoai_sdk_v1_config'
+                                   )
 
-                               "Config Core Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-config
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_config'
-                               )
+                                   "Model Worker Component
+                                   (
+                                        component_type = zif_peng_azoai_sdk_constants=>c_component_type-model
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                        component_class_name = 'zcl_peng_azoai_sdk_v1_model'
+                                   )
 
-                               "Model Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-model
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_model'
-                               )
+                                   "Deployments Worker Component
+                                   (
+                                        component_type = zif_peng_azoai_sdk_constants=>c_component_type-deployment
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                        component_class_name = 'zcl_peng_azoai_sdk_v1_deploy'
+                                   )
 
-                               "Deployments Worker Component
-*                               (
-*                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-deployment
-*                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-*                                    component_class_name = 'zcl_peng_azoai_sdk_v1_deploy'
-*                               )
+                                  "Files Worker Component
+                                   (
+                                        component_type = zif_peng_azoai_sdk_constants=>c_component_type-file
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                        component_class_name = 'zcl_peng_azoai_sdk_v1_file'
+                                   )
 
-                              "Files Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-file
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_file'
-                               )
+                                   "FineTunes Worker Component
+                                   (
+                                        component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                        component_class_name = 'zcl_peng_azoai_sdk_v1_finetune'
+                                   )
 
-                               "FineTunes Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_finetune'
-                               )
+                                   "Embeddings Worker Component
+                                   (
+                                        component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                        component_class_name = 'zcl_peng_azoai_sdk_v1_embeding'
+                                   )
 
-                               "Embeddings Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_embeding'
-                               )
+                                   "Completions Worker Component
+                                   (
+                                        component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                        component_class_name = 'zcl_peng_azoai_sdk_v1_complet'
+                                   )
 
-                               "Completions Worker Component
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_azoai_sdk_v1_complet'
-                               )
+                                   "Chat Completions Worker Component
+                                   (
+                                        component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions
+                                        component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                        component_class_name = 'zcl_peng_ai_sdk_v1_chatcomplet'
+                                   )
 
-                               "Chat Completions Worker Component - This is not supported in the version.
-                               (
-                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions
-                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                    component_class_name = 'zcl_peng_ai_sdk_chatcompl_base'
-                               )
+                               ).
 
-                           ).
+        WHEN
+              zif_peng_azoai_sdk_constants=>c_versions-v_2023_05_15 OR
+              zif_peng_azoai_sdk_constants=>c_versions-v_2023_06_01_preview OR
+              zif_peng_azoai_sdk_constants=>c_versions-v_2023_07_01_preview OR
+              zif_peng_azoai_sdk_constants=>c_versions-v_2023_08_01_preview.
 
-      WHEN zif_peng_oai_sdk_constants=>c_versions-v1.
-
-        components = VALUE #(
+          components = VALUE #(
                                  "SDK Core Component
                                  (    component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk
                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
@@ -405,6 +340,13 @@ CLASS zcl_peng_azoai_sdk_helper IMPLEMENTATION.
                                       component_class_name = 'zcl_peng_azoai_sdk_v1_model'
                                  )
 
+                                 "Deployments Worker Component
+*                               (
+*                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-deployment
+*                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+*                                    component_class_name = 'zcl_peng_azoai_sdk_v1_deploy'
+*                               )
+
                                 "Files Worker Component
                                  (
                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-file
@@ -423,30 +365,160 @@ CLASS zcl_peng_azoai_sdk_helper IMPLEMENTATION.
                                  (
                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings
                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                      component_class_name = 'zcl_peng_oai_sdk_v1_embeding'
+                                      component_class_name = 'zcl_peng_azoai_sdk_v1_embeding'
                                  )
 
                                  "Completions Worker Component
                                  (
                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions
                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                      component_class_name = 'zcl_peng_oai_sdk_v1_complet'
+                                      component_class_name = 'zcl_peng_azoai_sdk_v1_complet'
                                  )
 
-                                 "Chat Completions Worker Component
+                                 "Chat Completions Worker Component - This is not supported in the version.
                                  (
                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions
                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
-                                      component_class_name = 'zcl_peng_oai_sdk_v1_chatcompl'
+                                      component_class_name = 'zcl_peng_ai_sdk_chatcompl_base'
                                  )
 
                              ).
+        WHEN OTHERS.
+          components = VALUE #(
+                                  "SDK Core Component
+                                  (    component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk
+                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
+                                       component_class_name = 'ZCL_PENG_AZOAI_SDK_V1'
+                                  )
 
-      WHEN OTHERS.
-        RAISE EXCEPTION TYPE zcx_peng_azoai_sdk_exception
-          EXPORTING
-            textid = zcx_peng_azoai_sdk_exception=>version_not_supported.
-    ENDCASE.
+                                  "Config Core Component
+                                  (
+                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-config
+                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
+                                       component_class_name = 'zcl_peng_azoai_sdk_v1_config'
+                                  )
+
+                                  "Model Worker Component
+                                  (
+                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-model
+                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                       component_class_name = 'zcl_peng_azoai_sdk_v1_model'
+                                  )
+
+                                  "Deployments Worker Component
+*                               (
+*                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-deployment
+*                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+*                                    component_class_name = 'zcl_peng_azoai_sdk_v1_deploy'
+*                               )
+
+                                 "Files Worker Component
+                                  (
+                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-file
+                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                       component_class_name = 'zcl_peng_azoai_sdk_v1_file'
+                                  )
+
+                                  "FineTunes Worker Component
+                                  (
+                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning
+                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                       component_class_name = 'zcl_peng_azoai_sdk_v1_finetune'
+                                  )
+
+                                  "Embeddings Worker Component
+                                  (
+                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings
+                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                       component_class_name = 'zcl_peng_azoai_sdk_v1_embeding'
+                                  )
+
+                                  "Completions Worker Component
+                                  (
+                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions
+                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                       component_class_name = 'zcl_peng_azoai_sdk_v1_complet'
+                                  )
+
+                                  "Chat Completions Worker Component - This is not supported in the version.
+                                  (
+                                       component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions
+                                       component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                       component_class_name = 'zcl_peng_ai_sdk_v1_chatcomplet'
+                                  )
+
+                              ).
+      ENDCASE.
+    ENDIF.
+
+    IF api_type = zif_peng_azoai_sdk_constants=>c_apitype-openai.
+*    case api_version.
+*      WHEN zif_peng_oai_sdk_constants=>c_versions-v1.
+
+      components = VALUE #(
+                               "SDK Core Component
+                               (    component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk
+                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
+                                    component_class_name = 'ZCL_PENG_AZOAI_SDK_V1'
+                               )
+
+                               "Config Core Component
+                               (
+                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-config
+                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-core
+                                    component_class_name = 'zcl_peng_azoai_sdk_v1_config'
+                               )
+
+                               "Model Worker Component
+                               (
+                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-model
+                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                    component_class_name = 'zcl_peng_azoai_sdk_v1_model'
+                               )
+
+                              "Files Worker Component
+                               (
+                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-file
+                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                    component_class_name = 'zcl_peng_azoai_sdk_v1_file'
+                               )
+
+                               "FineTunes Worker Component
+                               (
+                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning
+                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                    component_class_name = 'zcl_peng_azoai_sdk_v1_finetune'
+                               )
+
+                               "Embeddings Worker Component
+                               (
+                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings
+                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                    component_class_name = 'zcl_peng_oai_sdk_v1_embeding'
+                               )
+
+                               "Completions Worker Component
+                               (
+                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions
+                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                    component_class_name = 'zcl_peng_oai_sdk_v1_complet'
+                               )
+
+                               "Chat Completions Worker Component
+                               (
+                                    component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions
+                                    component_classification = zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                                    component_class_name = 'zcl_peng_oai_sdk_v1_chatcompl'
+                               )
+
+                           ).
+
+*      WHEN OTHERS.
+*        RAISE EXCEPTION TYPE zcx_peng_azoai_sdk_exception
+*          EXPORTING
+*            textid = zcx_peng_azoai_sdk_exception=>version_not_supported.
+*    ENDCASE.
+    ENDIF.
 
 *   If a filter is specified, eliminate all others. This is used during SDK spin up from factory, and again in SDK sub-component instantiation.
     IF NOT filter IS INITIAL.

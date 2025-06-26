@@ -52,8 +52,9 @@ INTERFACE zif_peng_azoai_sdk_constants
 
 
 *   open AI resource identifier.
-    c_azure_openairesource TYPE string VALUE '.openai.azure.com',
-    c_openairesource       TYPE string VALUE 'api.openai.com',
+    c_azure_openairesource    TYPE string VALUE '.openai.azure.com',
+    c_azure_cognitiveresource TYPE string VALUE '.cognitiveservices.azure.com',
+    c_openairesource          TYPE string VALUE 'api.openai.com',
 
 *   File purpose.
     BEGIN OF c_filepurpose,
