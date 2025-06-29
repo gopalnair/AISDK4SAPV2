@@ -5,7 +5,7 @@ CLASS zcl_peng_azoai_sdk_deploy_base DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_sdk_comp_deploy.
+    INTERFACES zif_aisdk_azoai_comp_deploy.
     METHODS constructor.
   PROTECTED SECTION.
   PRIVATE SECTION.
@@ -18,12 +18,12 @@ CLASS zcl_peng_azoai_sdk_deploy_base IMPLEMENTATION.
   METHOD constructor.
 
     super->constructor( ).
-    _component_type = zif_peng_azoai_sdk_constants=>c_component_type-deployment.
+    _component_type = zif_aisdk_azoai_constants=>c_component_type-deployment.
 
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_deploy~get.
+  METHOD zif_aisdk_azoai_comp_deploy~get.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_DEPLOY_BASE
 * Method         : zif_peng_azoai_sdk_comp_deploy~get
@@ -41,7 +41,7 @@ CLASS zcl_peng_azoai_sdk_deploy_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_deploy~list.
+  METHOD zif_aisdk_azoai_comp_deploy~list.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_DEPLOY_BASE
 * Method         : zif_peng_azoai_sdk_comp_deploy~list
@@ -58,7 +58,7 @@ CLASS zcl_peng_azoai_sdk_deploy_base IMPLEMENTATION.
 *****************************************************************************************************************
     _not_implemented( ).
   ENDMETHOD.
-  METHOD zif_peng_azoai_sdk_comp_deploy~create.
+  METHOD zif_aisdk_azoai_comp_deploy~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_DEPLOY_BASE
 * Method         : zif_peng_azoai_sdk_comp_deploy~create
@@ -76,7 +76,7 @@ CLASS zcl_peng_azoai_sdk_deploy_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_deploy~delete.
+  METHOD zif_aisdk_azoai_comp_deploy~delete.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_DEPLOY_BASE
 * Method         : zif_peng_azoai_sdk_comp_deploy~delete

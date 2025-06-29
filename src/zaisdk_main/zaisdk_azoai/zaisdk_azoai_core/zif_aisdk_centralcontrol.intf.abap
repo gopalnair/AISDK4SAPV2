@@ -1,4 +1,4 @@
-INTERFACE zif_peng_azoai_centralcontrol
+INTERFACE zif_aisdk_centralcontrol
   PUBLIC .
 
   METHODS:

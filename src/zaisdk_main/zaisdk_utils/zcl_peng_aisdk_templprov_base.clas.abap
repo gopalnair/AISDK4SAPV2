@@ -9,7 +9,7 @@ CLASS zcl_peng_aisdk_templprov_base DEFINITION
     DATA:
       _version                TYPE string,
       _additional_init_params TYPE tihttpnvp,
-      _t_endpoint_dictionary  TYPE zif_peng_azoai_sdk_typinternal=>tty_endpoint_url_info.
+      _t_endpoint_dictionary  TYPE zif_aisdk_azoai_typinternal=>tty_endpoint_url_info.
 
   PRIVATE SECTION.
 ENDCLASS.

@@ -1,5 +1,5 @@
-"! <p class="shorttext synchronized" lang="en">MSPENG:Azure Open AI SDK - Deployments Component</p>
-INTERFACE zif_peng_azoai_sdk_comp_deploy
+"! <p class="shorttext synchronized" lang="en">AISDK:Azure Open AI SDK - Deployments Component</p>
+INTERFACE zif_aisdk_azoai_comp_deploy
   PUBLIC .
 
   "! <p class="shorttext synchronized" lang="en">Gets details for a single deployment</p>

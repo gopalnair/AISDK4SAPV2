@@ -5,7 +5,7 @@ CLASS zcl_peng_azoai_sdk_compl_base DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_sdk_comp_compl.
+    INTERFACES zif_aisdk_azoai_comp_compl.
     METHODS constructor.
 
   PROTECTED SECTION.
@@ -19,12 +19,12 @@ CLASS zcl_peng_azoai_sdk_compl_base IMPLEMENTATION.
   METHOD constructor.
 
     super->constructor( ).
-    _component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions.
+    _component_type = zif_aisdk_azoai_constants=>c_component_type-completions.
   ENDMETHOD.
 
 
 
-  METHOD zif_peng_azoai_sdk_comp_compl~create.
+  METHOD zif_aisdk_azoai_comp_compl~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_COMPL_BASE
 * Method         : zif_peng_azoai_sdk_comp_compl~create

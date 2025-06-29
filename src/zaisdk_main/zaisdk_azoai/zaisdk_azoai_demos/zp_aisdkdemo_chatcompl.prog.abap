@@ -39,7 +39,7 @@ start-of-selection.
       sdk_instance = zcl_peng_azoai_sdk_factory=>get_instance( )->get_sdk(
                                                             api_version = p_ver
                                                             api_base    = p_url
-                                                            api_type    = zif_peng_azoai_sdk_constants=>c_apitype-azure
+                                                            api_type    = zif_aisdk_azoai_constants=>c_apitype-azure
                                                             api_key     = p_key
                                                           ).
       create object g_aidemo_screen.
@@ -79,11 +79,11 @@ module pai input.
 *      chatcompl_input-max_tokens = p_length.
 * User's Input for System Message provide with role System
       append initial line to chatcompl_input-messages assigning field-symbol(<fs_message>).
-      <fs_message>-role = zif_peng_azoai_sdk_constants=>c_chatcompletion_role-system.
+      <fs_message>-role = zif_aisdk_azoai_constants=>c_chatcompletion_role-system.
       <fs_message>-content = g_sys_input.
 * User's Input for Prompt provide with role User
       append initial line to chatcompl_input-messages assigning <fs_message>.
-      <fs_message>-role = zif_peng_azoai_sdk_constants=>c_chatcompletion_role-user.
+      <fs_message>-role = zif_aisdk_azoai_constants=>c_chatcompletion_role-user.
       <fs_message>-content = g_str_input.
 * Parameters
       chatcompl_input-temperature    = g_temp_val.  "Temperature - Controls randomness.

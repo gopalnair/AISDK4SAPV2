@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOINTERF>
-    <CLSNAME>ZIF_PENG_AZOAI_SDK_CONFIG</CLSNAME>
+    <CLSNAME>ZIF_AISDK_AZOAI_CONFIG</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>MSPENG:Azure Open AI Config Interface</DESCRIPT>
+    <DESCRIPT>AISDK:Azure Open AI Config Interface</DESCRIPT>
     <EXPOSURE>2</EXPOSURE>
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>

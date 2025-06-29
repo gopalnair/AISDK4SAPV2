@@ -5,10 +5,10 @@ CLASS zcl_peng_azoai_sdk_v1_deploy DEFINITION
 
   PUBLIC SECTION.
     METHODS:
-      zif_peng_azoai_sdk_comp_deploy~get      REDEFINITION,
-      zif_peng_azoai_sdk_comp_deploy~list     REDEFINITION,
-      zif_peng_azoai_sdk_comp_deploy~create   REDEFINITION,
-      zif_peng_azoai_sdk_comp_deploy~delete   REDEFINITION.
+      zif_aisdk_azoai_comp_deploy~get      REDEFINITION,
+      zif_aisdk_azoai_comp_deploy~list     REDEFINITION,
+      zif_aisdk_azoai_comp_deploy~create   REDEFINITION,
+      zif_aisdk_azoai_comp_deploy~delete   REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -17,7 +17,7 @@ ENDCLASS.
 
 CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
 
-  METHOD zif_peng_azoai_sdk_comp_deploy~get.
+  METHOD zif_aisdk_azoai_comp_deploy~get.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_DEPLOY
 * Method         : zif_peng_azoai_sdk_comp_deploy~get
@@ -36,10 +36,10 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
 * Apr 6, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-get
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-get
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer.
@@ -47,10 +47,10 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-get
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-get
                                                                                          )   "{endpoint}/openai/deployments/{deployment-id}?api-version={version}
         ivobj_config           = _objconfig
-        ivt_templatecomponents = VALUE #(  ( name = zif_peng_azoai_sdk_uripatterns=>template_ids-deploymentid value = deploymentid ) ) "Deployment ID.
+        ivt_templatecomponents = VALUE #(  ( name = zif_aisdk_azoai_uripatterns=>template_ids-deploymentid value = deploymentid ) ) "Deployment ID.
       IMPORTING
         ov_url                 = DATA(actual_url)
         ovobj_http             = DATA(lo_http)
@@ -76,7 +76,7 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_deploy~list.
+  METHOD zif_aisdk_azoai_comp_deploy~list.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_DEPLOY
 * Method         : zif_peng_azoai_sdk_comp_deploy~list
@@ -94,10 +94,10 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
 * Apr 6, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-list
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-list
     ).
 
 
@@ -106,7 +106,7 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-list
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-list
                                                                                          )   "{endpoint}/openai/deployments?api-version={version}'
         ivobj_config           = _objconfig
       IMPORTING
@@ -135,7 +135,7 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_deploy~create.
+  METHOD zif_aisdk_azoai_comp_deploy~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_DEPLOY
 * Method         : zif_peng_azoai_sdk_comp_deploy~create
@@ -151,10 +151,10 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
 * Apr 6, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-create
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-create
     ).
 
     DATA:
@@ -172,7 +172,7 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-create
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-create
                                                                                          )   "'{endpoint}/openai/deployments?api-version={version}'
         ivobj_config           = _objconfig
       IMPORTING
@@ -207,7 +207,7 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
 
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_deploy~delete.
+  METHOD zif_aisdk_azoai_comp_deploy~delete.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_DEPLOY
 * Method         : zif_peng_azoai_sdk_comp_deploy~delete
@@ -226,10 +226,10 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
         dummy TYPE string.
 
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-delete
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-delete
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer.
@@ -237,10 +237,10 @@ CLASS zcl_peng_azoai_sdk_v1_deploy IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-delete
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-delete
                                                                                          )   "{endpoint}/openai/deployments/{deployment-id}?api-version={version}
         ivobj_config           = _objconfig
-        ivt_templatecomponents = VALUE #(  ( name = zif_peng_azoai_sdk_uripatterns=>template_ids-deploymentid value = deploymentid ) ) "Deployment ID.
+        ivt_templatecomponents = VALUE #(  ( name = zif_aisdk_azoai_uripatterns=>template_ids-deploymentid value = deploymentid ) ) "Deployment ID.
       IMPORTING
         ov_url                 = DATA(actual_url)
         ovobj_http             = DATA(lo_http)

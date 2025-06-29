@@ -6,7 +6,7 @@ CLASS zcl_peng_azoai_sdk_v1_config DEFINITION
   PUBLIC SECTION.
 
     METHODS:
-      zif_peng_azoai_sdk_config~initialize_config REDEFINITION.
+      zif_aisdk_azoai_config~initialize_config REDEFINITION.
 
   PROTECTED SECTION.
   PRIVATE SECTION.
@@ -95,7 +95,7 @@ ENDCLASS.
 
 CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 
-  METHOD zif_peng_azoai_sdk_config~initialize_config.
+  METHOD zif_aisdk_azoai_config~initialize_config.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_CONFIG
 * Method         : zif_peng_azoai_sdk_config~initialize_config
@@ -111,7 +111,7 @@ CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 * Apr 6, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 
-    super->zif_peng_azoai_sdk_config~initialize_config(
+    super->zif_aisdk_azoai_config~initialize_config(
       EXPORTING
         api_version = api_version           " API Version
         api_base    = api_base              " API Base
@@ -166,15 +166,15 @@ CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 *****************************************************************************************************************
     _t_authstrategies_supported = VALUE #(
                                             (
-                                                api_type = zif_peng_azoai_sdk_constants=>c_apitype-azure
+                                                api_type = zif_aisdk_azoai_constants=>c_apitype-azure
                                                 description = |Authentication using Key from Azure Open AI|
                                             )
                                             (
-                                                api_type = zif_peng_azoai_sdk_constants=>c_apitype-azure_ad
+                                                api_type = zif_aisdk_azoai_constants=>c_apitype-azure_ad
                                                 description = |Authentication using Azure Active Directory token|
                                             )
                                             (
-                                                api_type = zif_peng_azoai_sdk_constants=>c_apitype-openai
+                                                api_type = zif_aisdk_azoai_constants=>c_apitype-openai
                                                 description = |Open AI End point|
                                             )
                                          ).
@@ -207,29 +207,29 @@ CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 * Mar 19, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
     _t_versions_supported = VALUE #(
-                                        (   version_name                = zif_peng_azoai_sdk_constants=>c_versions-v_2022_12_01
-                                            version_id                  = zif_peng_azoai_sdk_constants=>c_versions-v_2022_12_01
+                                        (   version_name                = zif_aisdk_azoai_constants=>c_versions-v_2022_12_01
+                                            version_id                  = zif_aisdk_azoai_constants=>c_versions-v_2022_12_01
                                             version_handler_classname   = 'ZCL_PENG_AZOAI_SDK_V1'
                                         )
-                                        (   version_name                = zif_peng_azoai_sdk_constants=>c_versions-v_2023_03_15_preview
-                                            version_id                  = zif_peng_azoai_sdk_constants=>c_versions-v_2023_03_15_preview
+                                        (   version_name                = zif_aisdk_azoai_constants=>c_versions-v_2023_03_15_preview
+                                            version_id                  = zif_aisdk_azoai_constants=>c_versions-v_2023_03_15_preview
                                             version_handler_classname   = 'ZCL_PENG_AZOAI_SDK_V1'
                                         )
-                                        (   version_name                = zif_peng_azoai_sdk_constants=>c_versions-v_2023_05_15
-                                            version_id                  = zif_peng_azoai_sdk_constants=>c_versions-v_2023_05_15
+                                        (   version_name                = zif_aisdk_azoai_constants=>c_versions-v_2023_05_15
+                                            version_id                  = zif_aisdk_azoai_constants=>c_versions-v_2023_05_15
                                             version_handler_classname   = 'ZCL_PENG_AZOAI_SDK_V1'
                                         )
 
-                                        (   version_name                = zif_peng_azoai_sdk_constants=>c_versions-v_2023_06_01_preview
-                                            version_id                  = zif_peng_azoai_sdk_constants=>c_versions-v_2023_06_01_preview
+                                        (   version_name                = zif_aisdk_azoai_constants=>c_versions-v_2023_06_01_preview
+                                            version_id                  = zif_aisdk_azoai_constants=>c_versions-v_2023_06_01_preview
                                             version_handler_classname   = 'ZCL_PENG_AZOAI_SDK_V1'
                                         )
-                                        (   version_name                = zif_peng_azoai_sdk_constants=>c_versions-v_2023_07_01_preview
-                                            version_id                  = zif_peng_azoai_sdk_constants=>c_versions-v_2023_07_01_preview
+                                        (   version_name                = zif_aisdk_azoai_constants=>c_versions-v_2023_07_01_preview
+                                            version_id                  = zif_aisdk_azoai_constants=>c_versions-v_2023_07_01_preview
                                             version_handler_classname   = 'ZCL_PENG_AZOAI_SDK_V1'
                                         )
-                                        (   version_name                = zif_peng_azoai_sdk_constants=>c_versions-v_2023_08_01_preview
-                                            version_id                  = zif_peng_azoai_sdk_constants=>c_versions-v_2023_08_01_preview
+                                        (   version_name                = zif_aisdk_azoai_constants=>c_versions-v_2023_08_01_preview
+                                            version_id                  = zif_aisdk_azoai_constants=>c_versions-v_2023_08_01_preview
                                             version_handler_classname   = 'ZCL_PENG_AZOAI_SDK_V1'
                                         )
 
@@ -273,15 +273,15 @@ CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 *   NOTE : In Version 2.0 and later, this will need to change to include openAI, and later bard..etc.... and not just Azure Open AI.
 *   TODO, TOBRAINSTORM : Should we control this with a flag?
     CASE _api_type.
-      WHEN zif_peng_azoai_sdk_constants=>c_apitype-azure OR zif_peng_azoai_sdk_constants=>c_apitype-azure_ad.
-        IF NOT _api_base CS zif_peng_azoai_sdk_constants=>c_azure_openairesource AND NOT _api_base CS zif_peng_azoai_sdk_constants=>c_azure_cognitiveresource.
+      WHEN zif_aisdk_azoai_constants=>c_apitype-azure OR zif_aisdk_azoai_constants=>c_apitype-azure_ad.
+        IF NOT _api_base CS zif_aisdk_azoai_constants=>c_azure_openairesource AND NOT _api_base CS zif_aisdk_azoai_constants=>c_azure_cognitiveresource.
           RAISE EXCEPTION TYPE zcx_peng_azoai_sdk_exception
             EXPORTING
               textid = zcx_peng_azoai_sdk_exception=>invalid_api_base_url.
         ENDIF.
 
-      WHEN zif_peng_azoai_sdk_constants=>c_apitype-openai.
-        IF NOT _api_base CS zif_peng_azoai_sdk_constants=>c_openairesource.
+      WHEN zif_aisdk_azoai_constants=>c_apitype-openai.
+        IF NOT _api_base CS zif_aisdk_azoai_constants=>c_openairesource.
           RAISE EXCEPTION TYPE zcx_peng_azoai_sdk_exception
             EXPORTING
               textid = zcx_peng_azoai_sdk_exception=>invalid_api_base_url.
@@ -292,8 +292,8 @@ CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 
 *   We will need to adjust the API Base URL to a standard format of : http://resourcename.openai.azure.com - WITHOUT a final "/"
 *  Check if the provided URL starts with an HTTPS. If not, add it to the front. For now, the only protocol supported is https... but this can change in future.
-    IF _api_base(8) NE zif_peng_azoai_sdk_uripatterns=>supported_protocols-https.
-      _api_base = |{ zif_peng_azoai_sdk_uripatterns=>supported_protocols-https }{ _api_base }|.
+    IF _api_base(8) NE zif_aisdk_azoai_uripatterns=>supported_protocols-https.
+      _api_base = |{ zif_aisdk_azoai_uripatterns=>supported_protocols-https }{ _api_base }|.
     ENDIF.
 
 *   Check if the last character is a "/". If yes, take it out.
@@ -392,12 +392,12 @@ CLASS zcl_peng_azoai_sdk_v1_config IMPLEMENTATION.
 
 *   Depending on the auth type, we need to set the authentication header info.
     CASE _api_type.
-      WHEN zif_peng_azoai_sdk_constants=>c_apitype-azure.
-        _auth_header-name   = zif_peng_azoai_sdk_constants=>c_authheader_paramnames-api_key.
+      WHEN zif_aisdk_azoai_constants=>c_apitype-azure.
+        _auth_header-name   = zif_aisdk_azoai_constants=>c_authheader_paramnames-api_key.
         _auth_header-value  = _api_key.
-      WHEN zif_peng_azoai_sdk_constants=>c_apitype-azure_ad OR zif_peng_azoai_sdk_constants=>c_apitype-openai.
-        _auth_header-name   = zif_peng_azoai_sdk_constants=>c_authheader_paramnames-authorization.
-        _auth_header-value  = |{ zif_peng_azoai_sdk_constants=>c_authheader_paramnames-bearer } { _api_key }|.
+      WHEN zif_aisdk_azoai_constants=>c_apitype-azure_ad OR zif_aisdk_azoai_constants=>c_apitype-openai.
+        _auth_header-name   = zif_aisdk_azoai_constants=>c_authheader_paramnames-authorization.
+        _auth_header-value  = |{ zif_aisdk_azoai_constants=>c_authheader_paramnames-bearer } { _api_key }|.
       WHEN OTHERS.
         MESSAGE 'Error in SDK Code. DEBUG INFO: Class : ZCL_PENG_AZOAI_SDK_CONFIG, Method: _set_authentication' TYPE 'E'.
     ENDCASE.

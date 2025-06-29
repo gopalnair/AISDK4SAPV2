@@ -5,7 +5,7 @@ CLASS zcl_peng_azoai_sdk_fintun_base DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_sdk_comp_fintun .
+    INTERFACES zif_aisdk_azoai_comp_fintun .
     METHODS constructor.
   PROTECTED SECTION.
   PRIVATE SECTION.
@@ -18,9 +18,9 @@ CLASS zcl_peng_azoai_sdk_fintun_base IMPLEMENTATION.
   METHOD constructor.
 
     super->constructor( ).
-    _component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning.
+    _component_type = zif_aisdk_azoai_constants=>c_component_type-fine_tuning.
   ENDMETHOD.
-  METHOD zif_peng_azoai_sdk_comp_fintun~cancel.
+  METHOD zif_aisdk_azoai_comp_fintun~cancel.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FINTUN_BASE
 * Method         : zif_peng_azoai_sdk_comp_fintun~cancel
@@ -38,7 +38,7 @@ CLASS zcl_peng_azoai_sdk_fintun_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~create.
+  METHOD zif_aisdk_azoai_comp_fintun~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FINTUN_BASE
 * Method         : zif_peng_azoai_sdk_comp_fintun~create
@@ -56,7 +56,7 @@ CLASS zcl_peng_azoai_sdk_fintun_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~delete.
+  METHOD zif_aisdk_azoai_comp_fintun~delete.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FINTUN_BASE
 * Method         : zif_peng_azoai_sdk_comp_fintun~delete
@@ -74,7 +74,7 @@ CLASS zcl_peng_azoai_sdk_fintun_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~get.
+  METHOD zif_aisdk_azoai_comp_fintun~get.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FINTUN_BASE
 * Method         : zif_peng_azoai_sdk_comp_fintun~get
@@ -92,7 +92,7 @@ CLASS zcl_peng_azoai_sdk_fintun_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~get_events.
+  METHOD zif_aisdk_azoai_comp_fintun~get_events.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FINTUN_BASE
 * Method         : zif_peng_azoai_sdk_comp_fintun~get_events
@@ -110,7 +110,7 @@ CLASS zcl_peng_azoai_sdk_fintun_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~list.
+  METHOD zif_aisdk_azoai_comp_fintun~list.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FINTUN_BASE
 * Method         : zif_peng_azoai_sdk_comp_fintun~list

@@ -1,4 +1,4 @@
-INTERFACE zif_peng_azoai_sdk_comp_fintun
+INTERFACE zif_aisdk_azoai_comp_fintun
   PUBLIC .
 
   "! <p class="shorttext synchronized" lang="en">Cancels the processing of the fine-tune job</p>

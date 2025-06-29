@@ -4,7 +4,7 @@ CLASS zcl_peng_oai_sdk_v1_chatcompl DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-    METHODS zif_peng_ai_sdk_comp_chatcompl~create REDEFINITION.
+    METHODS zif_aisdk_comp_chatcompl~create REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 CLASS zcl_peng_oai_sdk_v1_chatcompl IMPLEMENTATION.
-  METHOD zif_peng_ai_sdk_comp_chatcompl~create.
+  METHOD zif_aisdk_comp_chatcompl~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AI_SDK_V1_CHATCOMPLET
 * Method         : zif_peng_ai_sdk_comp_chatcompl~create
@@ -41,10 +41,10 @@ CLASS zcl_peng_oai_sdk_v1_chatcompl IMPLEMENTATION.
         l_chatcompletions_create TYPE ty_oai_chatcompletioninput.
 
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-create
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-create
     ).
 
     MOVE-CORRESPONDING prompts TO l_chatcompletions_create.
@@ -62,7 +62,7 @@ CLASS zcl_peng_oai_sdk_v1_chatcompl IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-create
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-create
                                                                                          )   "{endpoint}/openai/deployments/{deployment-id}/chat/completions?api-version={version}'
         ivobj_config           = _objconfig
       IMPORTING

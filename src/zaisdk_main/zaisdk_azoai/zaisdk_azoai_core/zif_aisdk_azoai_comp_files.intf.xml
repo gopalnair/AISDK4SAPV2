@@ -3,119 +3,47 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOINTERF>
-    <CLSNAME>ZIF_PENG_AZOAI_SDK_COMP_FINTUN</CLSNAME>
+    <CLSNAME>ZIF_AISDK_AZOAI_COMP_FILES</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>MSPENG: Azure Open AI SDK - FineTune Component</DESCRIPT>
+    <DESCRIPT>AISDK: Azure Open AI SDK - Files Component</DESCRIPT>
     <EXPOSURE>2</EXPOSURE>
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>
    </VSEOINTERF>
    <DESCRIPTIONS>
     <SEOCOMPOTX>
-     <CMPNAME>CANCEL</CMPNAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Cancels the processing of the fine-tune job</DESCRIPT>
-    </SEOCOMPOTX>
-    <SEOCOMPOTX>
-     <CMPNAME>CREATE</CMPNAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Creates a job that fine-tunes a specified model</DESCRIPT>
-    </SEOCOMPOTX>
-    <SEOCOMPOTX>
      <CMPNAME>DELETE</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Deletes the fine-tune job</DESCRIPT>
+     <DESCRIPT>Deletes the file</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CMPNAME>GET</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Gets details for a single fine-tune job</DESCRIPT>
+     <DESCRIPT>Gets details for a single file</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
-     <CMPNAME>GET_EVENTS</CMPNAME>
+     <CMPNAME>GET_CONTENT</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Gets the events for the fine-tune job</DESCRIPT>
+     <DESCRIPT>Gets the content of the file specified by the given file-id</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>IMPORT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Creates new file by importing data from a provided url</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CMPNAME>LIST</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Gets a list of all fine-tune jobs</DESCRIPT>
+     <DESCRIPT>Gets a list of all files</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>UPLOAD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Creates a new file entity by uploading data</DESCRIPT>
     </SEOCOMPOTX>
    </DESCRIPTIONS>
    <DESCRIPTIONS_SUB>
     <SEOSUBCOTX>
-     <CMPNAME>CANCEL</CMPNAME>
-     <SCONAME>ERROR</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>ABAP Ready error details</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CANCEL</CMPNAME>
-     <SCONAME>FINETUNEID</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>The identifier of the fine-tune job</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CANCEL</CMPNAME>
-     <SCONAME>FINETUNE_CANCELLED</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>ABAP Ready fine-tune cancellation details</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CANCEL</CMPNAME>
-     <SCONAME>JSON</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>JSON string with information about operation</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CANCEL</CMPNAME>
-     <SCONAME>STATUSCODE</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Status Code</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CANCEL</CMPNAME>
-     <SCONAME>STATUSREASON</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Status Reason</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CREATE</CMPNAME>
-     <SCONAME>ERROR</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>ABAP Ready error details</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CREATE</CMPNAME>
-     <SCONAME>FINETUNE</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>ABAP ready fine tune details</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CREATE</CMPNAME>
-     <SCONAME>FINETUNE_CREATE</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Parameters for creating a new fine-tune job</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CREATE</CMPNAME>
-     <SCONAME>JSON</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>JSON string with information about operation</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CREATE</CMPNAME>
-     <SCONAME>STATUSCODE</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Status Code</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>CREATE</CMPNAME>
-     <SCONAME>STATUSREASON</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Status Reason</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
      <CMPNAME>DELETE</CMPNAME>
      <SCONAME>ERROR</SCONAME>
      <LANGU>E</LANGU>
@@ -123,9 +51,9 @@
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>DELETE</CMPNAME>
-     <SCONAME>FINETUNEID</SCONAME>
+     <SCONAME>FILEID</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>The identifier of the fine-tune job</DESCRIPT>
+     <DESCRIPT>The identifier of the file.</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>DELETE</CMPNAME>
@@ -143,7 +71,7 @@
      <CMPNAME>DELETE</CMPNAME>
      <SCONAME>STATUSREASON</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Status Reason</DESCRIPT>
+     <DESCRIPT>Status Description</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>GET</CMPNAME>
@@ -153,15 +81,15 @@
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>GET</CMPNAME>
-     <SCONAME>FINETUNE</SCONAME>
+     <SCONAME>FILE</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>ABAP ready fine tune details</DESCRIPT>
+     <DESCRIPT>ABAP Ready File Information</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>GET</CMPNAME>
-     <SCONAME>FINETUNEID</SCONAME>
+     <SCONAME>FILEID</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>The identifier of the fine-tune job</DESCRIPT>
+     <DESCRIPT>The identifier of the file.</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>GET</CMPNAME>
@@ -179,43 +107,73 @@
      <CMPNAME>GET</CMPNAME>
      <SCONAME>STATUSREASON</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Status Reason</DESCRIPT>
+     <DESCRIPT>Status Description</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
-     <CMPNAME>GET_EVENTS</CMPNAME>
+     <CMPNAME>GET_CONTENT</CMPNAME>
+     <SCONAME>CONTENT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Content of the file</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_CONTENT</CMPNAME>
      <SCONAME>ERROR</SCONAME>
      <LANGU>E</LANGU>
      <DESCRIPT>ABAP Ready error details</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
-     <CMPNAME>GET_EVENTS</CMPNAME>
-     <SCONAME>FINETUNEID</SCONAME>
+     <CMPNAME>GET_CONTENT</CMPNAME>
+     <SCONAME>FILEID</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>The identifier of the fine-tune job</DESCRIPT>
+     <DESCRIPT>The identifier of the file.</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
-     <CMPNAME>GET_EVENTS</CMPNAME>
-     <SCONAME>FINETUNE_EVENTS</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>ABAP Ready list of fine-tune job events</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>GET_EVENTS</CMPNAME>
-     <SCONAME>JSON</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>JSON string with information about operation</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>GET_EVENTS</CMPNAME>
+     <CMPNAME>GET_CONTENT</CMPNAME>
      <SCONAME>STATUSCODE</SCONAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Status Code</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
-     <CMPNAME>GET_EVENTS</CMPNAME>
+     <CMPNAME>GET_CONTENT</CMPNAME>
      <SCONAME>STATUSREASON</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Status Reason</DESCRIPT>
+     <DESCRIPT>Status Description</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IMPORT</CMPNAME>
+     <SCONAME>ERROR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP Ready error details</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IMPORT</CMPNAME>
+     <SCONAME>FILE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP Ready File Information</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IMPORT</CMPNAME>
+     <SCONAME>IMPORT_INFO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Import Information</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IMPORT</CMPNAME>
+     <SCONAME>JSON</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>JSON string with information about operation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IMPORT</CMPNAME>
+     <SCONAME>STATUSCODE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Status Code</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IMPORT</CMPNAME>
+     <SCONAME>STATUSREASON</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Status Description</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>LIST</CMPNAME>
@@ -225,9 +183,9 @@
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>LIST</CMPNAME>
-     <SCONAME>FINETUNE_LIST</SCONAME>
+     <SCONAME>FILELIST</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>ABAP Ready list of fine-tune jobs</DESCRIPT>
+     <DESCRIPT>ABAP Ready list of files</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>LIST</CMPNAME>
@@ -245,7 +203,49 @@
      <CMPNAME>LIST</CMPNAME>
      <SCONAME>STATUSREASON</SCONAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Status Reason</DESCRIPT>
+     <DESCRIPT>Status Description</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPLOAD</CMPNAME>
+     <SCONAME>ERROR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP Ready error details</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPLOAD</CMPNAME>
+     <SCONAME>FILE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP Ready file information</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPLOAD</CMPNAME>
+     <SCONAME>FILENAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of file if upload is successful</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPLOAD</CMPNAME>
+     <SCONAME>JSON</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>JSON string with information about operation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPLOAD</CMPNAME>
+     <SCONAME>JSONLDATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>JSONL data to upload</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPLOAD</CMPNAME>
+     <SCONAME>STATUSCODE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Status Code</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPLOAD</CMPNAME>
+     <SCONAME>STATUSREASON</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Status Description</DESCRIPT>
     </SEOSUBCOTX>
    </DESCRIPTIONS_SUB>
   </asx:values>

@@ -1,4 +1,4 @@
-INTERFACE zif_peng_azoai_sdk_typinternal
+INTERFACE zif_aisdk_azoai_typinternal
   PUBLIC .
 
 ************************** General Data Types - INTERNAL *****************

@@ -6,7 +6,7 @@ CLASS zcl_peng_azoai_sdk_model_base DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_sdk_comp_model .
+    INTERFACES zif_aisdk_azoai_comp_model .
 
     METHODS constructor.
   PROTECTED SECTION.
@@ -20,11 +20,11 @@ CLASS zcl_peng_azoai_sdk_model_base IMPLEMENTATION.
 
   METHOD constructor.
     super->constructor( ).
-    _component_type = zif_peng_azoai_sdk_constants=>c_component_type-model. "Model Component.
+    _component_type = zif_aisdk_azoai_constants=>c_component_type-model. "Model Component.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_model~get.
+  METHOD zif_aisdk_azoai_comp_model~get.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_MODEL_BASE
 * Method         : zif_peng_azoai_sdk_comp_model~get
@@ -43,7 +43,7 @@ CLASS zcl_peng_azoai_sdk_model_base IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_model~list.
+  METHOD zif_aisdk_azoai_comp_model~list.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_MODEL_BASE
 * Method         : zif_peng_azoai_sdk_comp_model~list

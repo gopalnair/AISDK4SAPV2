@@ -1,4 +1,4 @@
-INTERFACE zif_peng_azoai_sdk_comp_files
+INTERFACE zif_aisdk_azoai_comp_files
   PUBLIC .
 *  INTERFACES zif_peng_azoai_sdk_component .
 * https://learn.microsoft.com/en-us/rest/api/cognitiveservices/azureopenaistable/files

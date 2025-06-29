@@ -5,12 +5,12 @@ CLASS zcl_peng_azoai_sdk_v1_finetune DEFINITION
 
   PUBLIC SECTION.
     METHODS:
-      zif_peng_azoai_sdk_comp_fintun~cancel     REDEFINITION,
-      zif_peng_azoai_sdk_comp_fintun~create     REDEFINITION,
-      zif_peng_azoai_sdk_comp_fintun~delete     REDEFINITION,
-      zif_peng_azoai_sdk_comp_fintun~get        REDEFINITION,
-      zif_peng_azoai_sdk_comp_fintun~get_events REDEFINITION,
-      zif_peng_azoai_sdk_comp_fintun~list       REDEFINITION.
+      zif_aisdk_azoai_comp_fintun~cancel     REDEFINITION,
+      zif_aisdk_azoai_comp_fintun~create     REDEFINITION,
+      zif_aisdk_azoai_comp_fintun~delete     REDEFINITION,
+      zif_aisdk_azoai_comp_fintun~get        REDEFINITION,
+      zif_aisdk_azoai_comp_fintun~get_events REDEFINITION,
+      zif_aisdk_azoai_comp_fintun~list       REDEFINITION.
 
 
   PROTECTED SECTION.
@@ -22,7 +22,7 @@ ENDCLASS.
 CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
 
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~cancel.
+  METHOD zif_aisdk_azoai_comp_fintun~cancel.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_FINETUNE
 * Method         : zif_peng_azoai_sdk_comp_fintun~cancel
@@ -40,10 +40,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
 * Apr 7, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-cancel
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-cancel
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer
@@ -51,10 +51,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-cancel
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-cancel
                                                                                          )   "{endpoint}/openai/fine-tunes/{fine-tune-id}/cancel?api-version={version}'
         ivobj_config           = _objconfig
-        ivt_templatecomponents = VALUE #(  ( name = zif_peng_azoai_sdk_uripatterns=>template_ids-finetuneid value = finetuneid  ) ) "Fine Tune ID.
+        ivt_templatecomponents = VALUE #(  ( name = zif_aisdk_azoai_uripatterns=>template_ids-finetuneid value = finetuneid  ) ) "Fine Tune ID.
       IMPORTING
         ov_url                 = DATA(actual_url)
         ovobj_http             = DATA(lo_http)
@@ -86,7 +86,7 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~create.
+  METHOD zif_aisdk_azoai_comp_fintun~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_FINETUNE
 * Method         : zif_peng_azoai_sdk_comp_fintun~create
@@ -106,10 +106,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
 * Apr 7, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-create
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-create
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer.
@@ -117,7 +117,7 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-create
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-create
                                                                                          )   "'{endpoint}/openai/fine-tunes?api-version={version}'
         ivobj_config           = _objconfig
       IMPORTING
@@ -153,7 +153,7 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~delete.
+  METHOD zif_aisdk_azoai_comp_fintun~delete.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_FINETUNE
 * Method         : zif_peng_azoai_sdk_comp_fintun~delete
@@ -174,10 +174,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
            dummy TYPE string.
 
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-delete
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-delete
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer.
@@ -185,10 +185,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-delete
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-delete
                                                                                          )   "'{endpoint}/openai/fine-tunes/{fine-tune-id}?api-version={version}'
         ivobj_config           = _objconfig
-        ivt_templatecomponents = VALUE #(  ( name = zif_peng_azoai_sdk_uripatterns=>template_ids-finetuneid value = finetuneid   ) ) "Fine Tune ID.
+        ivt_templatecomponents = VALUE #(  ( name = zif_aisdk_azoai_uripatterns=>template_ids-finetuneid value = finetuneid   ) ) "Fine Tune ID.
       IMPORTING
         ov_url                 = DATA(actual_url)
         ovobj_http             = DATA(lo_http)
@@ -213,7 +213,7 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~get.
+  METHOD zif_aisdk_azoai_comp_fintun~get.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_FINETUNE
 * Method         : zif_peng_azoai_sdk_comp_fintun~get
@@ -234,10 +234,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
 *****************************************************************************************************************
 
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-get
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-get
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer.
@@ -245,10 +245,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-get
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-get
                                                                                          )   "'{endpoint}/openai/fine-tunes/{fine-tune-id}?api-version={version}'
         ivobj_config           = _objconfig
-        ivt_templatecomponents = VALUE #(  ( name = zif_peng_azoai_sdk_uripatterns=>template_ids-finetuneid value = finetuneid  ) ) "Fine Tune ID.
+        ivt_templatecomponents = VALUE #(  ( name = zif_aisdk_azoai_uripatterns=>template_ids-finetuneid value = finetuneid  ) ) "Fine Tune ID.
       IMPORTING
         ov_url                 = DATA(actual_url)
         ovobj_http             = DATA(lo_http)
@@ -273,7 +273,7 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~get_events.
+  METHOD zif_aisdk_azoai_comp_fintun~get_events.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_FINETUNE
 * Method         : zif_peng_azoai_sdk_comp_fintun~get_events
@@ -292,10 +292,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
 * Apr 7, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-get_events
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-get_events
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer.
@@ -303,10 +303,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-get_events
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-get_events
                                                                                          )   "'{endpoint}/openai/fine-tunes/{fine-tune-id}/events?api-version={version}'
         ivobj_config           = _objconfig
-        ivt_templatecomponents = VALUE #(  ( name = zif_peng_azoai_sdk_uripatterns=>template_ids-finetuneid value = finetuneid  ) ) "Fine Tune ID.
+        ivt_templatecomponents = VALUE #(  ( name = zif_aisdk_azoai_uripatterns=>template_ids-finetuneid value = finetuneid  ) ) "Fine Tune ID.
       IMPORTING
         ov_url                 = DATA(actual_url)
         ovobj_http             = DATA(lo_http)
@@ -331,7 +331,7 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_fintun~list.
+  METHOD zif_aisdk_azoai_comp_fintun~list.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_FINETUNE
 * Method         : zif_peng_azoai_sdk_comp_fintun~list
@@ -352,10 +352,10 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
 * Apr 7, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-list
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-list
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer.
@@ -363,7 +363,7 @@ CLASS ZCL_PENG_AZOAI_SDK_V1_FINETUNE IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-list
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-list
                                                                                          )   "'{endpoint}/openai/fine-tunes?api-version={version}'
         ivobj_config           = _objconfig
       IMPORTING

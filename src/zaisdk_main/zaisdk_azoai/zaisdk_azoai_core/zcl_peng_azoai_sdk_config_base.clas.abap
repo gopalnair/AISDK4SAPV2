@@ -5,7 +5,7 @@ CLASS zcl_peng_azoai_sdk_config_base DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_sdk_config .
+    INTERFACES zif_aisdk_azoai_config .
 
 
 
@@ -61,7 +61,7 @@ ENDCLASS.
 CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
 
 
-  METHOD zif_peng_azoai_sdk_config~get_apibase.
+  METHOD zif_aisdk_azoai_config~get_apibase.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_apibase
@@ -80,7 +80,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_config~get_apiversion.
+  METHOD zif_aisdk_azoai_config~get_apiversion.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_apiversion
@@ -99,7 +99,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_config~get_authheader.
+  METHOD zif_aisdk_azoai_config~get_authheader.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_authheader
@@ -118,7 +118,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_config~initialize_config.
+  METHOD zif_aisdk_azoai_config~initialize_config.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~initialize_config
@@ -143,7 +143,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_config~get_single_parameter.
+  METHOD zif_aisdk_azoai_config~get_single_parameter.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_parameter
@@ -177,7 +177,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
 
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_config~get_apitype.
+  METHOD zif_aisdk_azoai_config~get_apitype.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_apitype
@@ -195,7 +195,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
     api_type = _api_type.
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_config~get_all_parameters.
+  METHOD zif_aisdk_azoai_config~get_all_parameters.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_all_parameters
@@ -307,7 +307,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
 *   Trial 3 : If both the above options fail to read the profile (meaning, the profile requested is not maintained), fall back to default profile, and attempt to read default profile from DB
 *             with system ID specificity, and which is active.
     SELECT SINGLE * FROM ztaisdkrunprofil INTO @_run_profile
-             WHERE profile_id = @zif_peng_azoai_sdk_constants=>c_sdk_default_profile_name
+             WHERE profile_id = @zif_aisdk_azoai_constants=>c_sdk_default_profile_name
              AND   sysid = @sy-sysid
              AND inactive = @abap_false.
 
@@ -317,7 +317,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
 
 *   Trial 4: Check if default profile is maintained without a system ID.
     SELECT SINGLE * FROM ztaisdkrunprofil INTO @_run_profile
-            WHERE profile_id = @zif_peng_azoai_sdk_constants=>c_sdk_default_profile_name
+            WHERE profile_id = @zif_aisdk_azoai_constants=>c_sdk_default_profile_name
             AND   ( sysid = '' OR sysid = '*' )
             AND inactive = @abap_false.
 
@@ -327,14 +327,14 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
 
 
 *  If we reach here, it means, all attempts to determine a configured run profile has failed. Use the core fall back option.
-    _run_profile-callback_classname = to_upper( zif_peng_azoai_sdk_constants=>c_central_control_class ).
-    _run_profile-profile_id = zif_peng_azoai_sdk_constants=>c_sdk_default_profile_name.
+    _run_profile-callback_classname = to_upper( zif_aisdk_azoai_constants=>c_central_control_class ).
+    _run_profile-profile_id = zif_aisdk_azoai_constants=>c_sdk_default_profile_name.
     _run_profile-sysid = sy-sysid.
     _run_profile-mandt = sy-mandt.
 
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_config~get_runprofile.
+  METHOD zif_aisdk_azoai_config~get_runprofile.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_runprofile
@@ -352,7 +352,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
     run_profile = _run_profile.
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_config~get_runprofile_handler.
+  METHOD zif_aisdk_azoai_config~get_runprofile_handler.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_runprofile_handler
@@ -370,7 +370,7 @@ CLASS zcl_peng_azoai_sdk_config_base IMPLEMENTATION.
     profile_handler = _obj_profilehandler.
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_config~get_accesspoint_provider.
+  METHOD zif_aisdk_azoai_config~get_accesspoint_provider.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_CONFIG_BASE
 * Method         : zif_peng_azoai_sdk_config~get_accesspoint_provider

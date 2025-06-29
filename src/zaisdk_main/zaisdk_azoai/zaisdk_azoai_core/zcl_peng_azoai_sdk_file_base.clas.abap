@@ -5,7 +5,7 @@ CLASS zcl_peng_azoai_sdk_file_base DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_sdk_comp_files.
+    INTERFACES zif_aisdk_azoai_comp_files.
     METHODS constructor.
   PROTECTED SECTION.
   PRIVATE SECTION.
@@ -18,9 +18,9 @@ CLASS zcl_peng_azoai_sdk_file_base IMPLEMENTATION.
   METHOD constructor.
 
     super->constructor( ).
-    _component_type = zif_peng_azoai_sdk_constants=>c_component_type-file.
+    _component_type = zif_aisdk_azoai_constants=>c_component_type-file.
   ENDMETHOD.
-  METHOD zif_peng_azoai_sdk_comp_files~delete.
+  METHOD zif_aisdk_azoai_comp_files~delete.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FILE_BASE
 * Method         : zif_peng_azoai_sdk_comp_files~delete
@@ -38,7 +38,7 @@ CLASS zcl_peng_azoai_sdk_file_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_files~get.
+  METHOD zif_aisdk_azoai_comp_files~get.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FILE_BASE
 * Method         : zif_peng_azoai_sdk_comp_files~get
@@ -56,7 +56,7 @@ CLASS zcl_peng_azoai_sdk_file_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_files~get_content.
+  METHOD zif_aisdk_azoai_comp_files~get_content.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FILE_BASE
 * Method         : zif_peng_azoai_sdk_comp_files~get_content
@@ -74,7 +74,7 @@ CLASS zcl_peng_azoai_sdk_file_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_files~import.
+  METHOD zif_aisdk_azoai_comp_files~import.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FILE_BASE
 * Method         : zif_peng_azoai_sdk_comp_files~import
@@ -92,7 +92,7 @@ CLASS zcl_peng_azoai_sdk_file_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_files~list.
+  METHOD zif_aisdk_azoai_comp_files~list.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FILE_BASE
 * Method         : zif_peng_azoai_sdk_comp_files~list
@@ -110,7 +110,7 @@ CLASS zcl_peng_azoai_sdk_file_base IMPLEMENTATION.
     _not_implemented( ).
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_sdk_comp_files~upload.
+  METHOD zif_aisdk_azoai_comp_files~upload.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_FILE_BASE
 * Method         : zif_peng_azoai_sdk_comp_files~upload

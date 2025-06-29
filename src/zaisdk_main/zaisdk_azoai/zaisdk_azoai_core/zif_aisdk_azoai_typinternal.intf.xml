@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOINTERF>
-    <CLSNAME>ZIF_PENG_AZOAI_SDK_CONSTANTS</CLSNAME>
+    <CLSNAME>ZIF_AISDK_AZOAI_TYPINTERNAL</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>MSPENG:Azure Open AI Constants</DESCRIPT>
+    <DESCRIPT>AISDK:Azure Open AI SDK Internal Data Types (DO NOT USE)</DESCRIPT>
     <EXPOSURE>2</EXPOSURE>
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>

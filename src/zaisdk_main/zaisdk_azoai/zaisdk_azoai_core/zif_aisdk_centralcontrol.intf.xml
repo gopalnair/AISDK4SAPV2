@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOINTERF>
-    <CLSNAME>ZIF_PENG_AZOAI_CENTRALCONTROL</CLSNAME>
+    <CLSNAME>ZIF_AISDK_CENTRALCONTROL</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>MSPENG: Interface for Central Control</DESCRIPT>
+    <DESCRIPT>AISDK: Interface for Central Control</DESCRIPT>
     <EXPOSURE>2</EXPOSURE>
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>

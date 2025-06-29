@@ -5,7 +5,7 @@ CLASS zcl_peng_azoai_sdk_embed_base DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_sdk_comp_embed.
+    INTERFACES zif_aisdk_azoai_comp_embed.
     METHODS constructor.
 
   PROTECTED SECTION.
@@ -19,12 +19,12 @@ CLASS zcl_peng_azoai_sdk_embed_base IMPLEMENTATION.
   METHOD constructor.
 
     super->constructor( ).
-    _component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings.
+    _component_type = zif_aisdk_azoai_constants=>c_component_type-embeddings.
   ENDMETHOD.
 
 
 
-  METHOD zif_peng_azoai_sdk_comp_embed~create.
+  METHOD zif_aisdk_azoai_comp_embed~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_COMPL_BASE
 * Method         : zif_peng_azoai_sdk_comp_embed~create

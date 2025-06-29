@@ -1,4 +1,4 @@
-INTERFACE zif_peng_azoai_sdk_component
+INTERFACE zif_aisdk_azoai_component
   PUBLIC .
 
 
@@ -10,7 +10,7 @@ INTERFACE zif_peng_azoai_sdk_component
   "! @raising zcx_peng_azoai_sdk_exception | <p class="shorttext synchronized" lang="en"></p>
   METHODS initialize_component
     IMPORTING
-      component_set TYPE zif_peng_azoai_sdk_typinternal=>tty_component_init_param
+      component_set TYPE zif_aisdk_azoai_typinternal=>tty_component_init_param
     RAISING
       zcx_peng_azoai_sdk_exception.
 

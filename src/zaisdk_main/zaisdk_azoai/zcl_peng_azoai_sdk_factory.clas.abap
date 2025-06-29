@@ -105,7 +105,7 @@ CLASS zcl_peng_azoai_sdk_factory IMPLEMENTATION.
 * Mar 22, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
     DATA:
-        objconfig TYPE REF TO zif_peng_azoai_sdk_config.
+        objconfig TYPE REF TO zif_aisdk_azoai_config.
 
 *   Get component names for the requested version. If the version is not supported for the specific api type, an exception is raised.
 *   Here, we are only interested in Core Components, namely - Config, and Main SDK. This is to seed the spin up process.
@@ -113,13 +113,13 @@ CLASS zcl_peng_azoai_sdk_factory IMPLEMENTATION.
     DATA(components) = _objhelper->get_components_for_version(
                                                                 api_type = api_type
                                                                 api_version = api_version
-                                                                filter = zif_peng_azoai_sdk_constants=>c_component_classification-core
+                                                                filter = zif_aisdk_azoai_constants=>c_component_classification-core
                                                                 ).
 
 *  Here, we are not really going to check if an instance is available, since this point is where pretty much everything is spinning up.
 *  Hence, we (sort of) break the rule of - if an instance is present in the component list, then use it - Rather, we blindly create new instance.
 *  In future, we may modify this to allow injection of components.
-    DATA(config_class_name) = to_upper( components[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-config ]-component_class_name ) .
+    DATA(config_class_name) = to_upper( components[ component_type = zif_aisdk_azoai_constants=>c_component_type-config ]-component_class_name ) .
     CREATE OBJECT objconfig TYPE (config_class_name).
     objconfig->initialize_config(
       EXPORTING
@@ -133,7 +133,7 @@ CLASS zcl_peng_azoai_sdk_factory IMPLEMENTATION.
 
 *   Check with central control if SDK instantiation is permitted. if not permitted, an exception will be raised by enterprise specific implementation
 *   which will then boil up to invoker.
-    objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~start_sdk(
+    objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~start_sdk(
       EXPORTING
         api_version = api_version              " API Version
         api_base    = api_base                 " API Base URL
@@ -145,7 +145,7 @@ CLASS zcl_peng_azoai_sdk_factory IMPLEMENTATION.
 
 
 *   Create an instance of SDK.
-    DATA(sdk_class_name) = to_upper( components[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk ]-component_class_name ).
+    DATA(sdk_class_name) = to_upper( components[ component_type = zif_aisdk_azoai_constants=>c_component_type-sdk ]-component_class_name ).
     CREATE OBJECT sdk TYPE (sdk_class_name).
     sdk->initialize( config = objconfig ).
 

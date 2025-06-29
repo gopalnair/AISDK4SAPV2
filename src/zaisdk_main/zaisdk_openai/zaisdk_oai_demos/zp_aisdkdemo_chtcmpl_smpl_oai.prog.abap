@@ -22,17 +22,17 @@ START-OF-SELECTION.
       sdk_instance = zcl_peng_azoai_sdk_factory=>get_instance( )->get_sdk(
                                                             api_version = p_ver
                                                             api_base    = p_url
-                                                            api_type    = zif_peng_azoai_sdk_constants=>c_apitype-openai
+                                                            api_type    = zif_aisdk_azoai_constants=>c_apitype-openai
                                                             api_key     = p_key
                                                           ).
 
 *     Construct the prompt with system and user roles.
       APPEND INITIAL LINE TO chatcompl_input-messages ASSIGNING FIELD-SYMBOL(<fs_message>).
-      <fs_message>-role = zif_peng_azoai_sdk_constants=>c_chatcompletion_role-system.
+      <fs_message>-role = zif_aisdk_azoai_constants=>c_chatcompletion_role-system.
       <fs_message>-content = |You are an expert ABAP Developer|.
 
       APPEND INITIAL LINE TO chatcompl_input-messages ASSIGNING <fs_message>.
-      <fs_message>-role = zif_peng_azoai_sdk_constants=>c_chatcompletion_role-user.
+      <fs_message>-role = zif_aisdk_azoai_constants=>c_chatcompletion_role-user.
       <fs_message>-content = |Write an ABAP program which gets contents from www.microsoft.com website. Include comments in the code so that anyone can understand the code.|.
 
 *     Invoke Chat completion.

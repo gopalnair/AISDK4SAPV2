@@ -1,5 +1,5 @@
-"! <p class="shorttext synchronized" lang="en">MSPENG: Azure Open AI SDK - Completions Component</p>
-INTERFACE zif_peng_ai_sdk_comp_chatcompl
+"! <p class="shorttext synchronized" lang="en">AISDK: Azure Open AI SDK - Completions Component</p>
+INTERFACE zif_aisdk_comp_chatcompl
   PUBLIC .
 
   "! <p class="shorttext synchronized" lang="en">Performs a Chat Completion.</p>

@@ -1,4 +1,4 @@
-INTERFACE zif_peng_azoai_sdk_uripatterns
+INTERFACE zif_aisdk_azoai_uripatterns
   PUBLIC .
 
   CONSTANTS:

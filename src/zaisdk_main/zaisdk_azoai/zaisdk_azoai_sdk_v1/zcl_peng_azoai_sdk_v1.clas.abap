@@ -42,7 +42,7 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 * Mar 28, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
     DATA:
-      lt_component_set        TYPE zif_peng_azoai_sdk_typinternal=>tty_component_init_param,
+      lt_component_set        TYPE zif_aisdk_azoai_typinternal=>tty_component_init_param,
       ls_component_class_name TYPE string,
       lobj_component          TYPE REF TO zcl_peng_azoai_sdk_component.
 
@@ -54,8 +54,8 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 
 *       Prepare the core component sets which will be used to initialize sub-components.
         lt_component_set = VALUE #(
-                                    ( component_type = zif_peng_azoai_sdk_constants=>c_component_type-config component_instance = _objconfig )  "Config Component
-                                    ( component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk component_instance = me )             "SDK Instance
+                                    ( component_type = zif_aisdk_azoai_constants=>c_component_type-config component_instance = _objconfig )  "Config Component
+                                    ( component_type = zif_aisdk_azoai_constants=>c_component_type-sdk component_instance = me )             "SDK Instance
                                   ).
 
 
@@ -64,10 +64,11 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *   Additionally, the SDK component itself is sent in, so that cross access is possible through the SDK object bridge. So, if for advanced
 *   and value added use cases, we need to access deployments from model component, we can easily bridge through the sdk object. Having said that,
 *   This will not be used during initial phase of the SDK development, but will be, based on use cases/ideas/brainstorming/feature requests once the base SDK matures.
+        BREAK developer.
         _t_subcomponents = _objhelper->get_components_for_version(
                              api_type    = _objconfig->get_apitype( )
                              api_version = _objconfig->get_apiversion(  )
-                             filter      =  zif_peng_azoai_sdk_constants=>c_component_classification-submodule
+                             filter      =  zif_aisdk_azoai_constants=>c_component_classification-submodule
                            ).
 
 *       Initialize each sub-component, and store it away, along with its identifier.
@@ -78,7 +79,7 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *         If an exception is raised by the central controller, skip initialization of the component, and proceed to next one. If the user attempts to
 *         access the component, safety check methods will intercept it, and issue exception through error handling.
           TRY.
-              _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~initialize_sdkcomponent( component_type = <fs_subcomponent>-component_type ).
+              _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~initialize_sdkcomponent( component_type = <fs_subcomponent>-component_type ).
             CATCH zcx_peng_azoai_sdk_exception. " MSPENG:Azure Open AI ABAP SDK Exception.
               CLEAR <fs_subcomponent>-component_instance.
               CONTINUE.
@@ -87,7 +88,7 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *         Create an instance of the sub-module, and trigger initialization of the component.
           CREATE OBJECT <fs_subcomponent>-component_instance TYPE (<fs_subcomponent>-component_class_name).
           lobj_component ?= <fs_subcomponent>-component_instance.
-          lobj_component->zif_peng_azoai_sdk_component~initialize_component( component_set = lt_component_set  ).
+          lobj_component->zif_aisdk_azoai_component~initialize_component( component_set = lt_component_set  ).
         ENDLOOP.
 
       CATCH cx_root.
@@ -117,8 +118,8 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *-------------------------------------------------------------------------------------------------------------
 * Mar 28, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
-    _check_component_safety( component_type = zif_peng_azoai_sdk_constants=>c_component_type-model ).
-    model ?= _t_subcomponents[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-model ]-component_instance.
+    _check_component_safety( component_type = zif_aisdk_azoai_constants=>c_component_type-model ).
+    model ?= _t_subcomponents[ component_type = zif_aisdk_azoai_constants=>c_component_type-model ]-component_instance.
   ENDMETHOD.
 
   METHOD zif_peng_azoai_sdk~deployments.
@@ -144,8 +145,8 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *-------------------------------------------------------------------------------------------------------------
 * Mar 28, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
-    _check_component_safety( component_type = zif_peng_azoai_sdk_constants=>c_component_type-deployment ).
-    deployments ?= _t_subcomponents[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-deployment ]-component_instance.
+    _check_component_safety( component_type = zif_aisdk_azoai_constants=>c_component_type-deployment ).
+    deployments ?= _t_subcomponents[ component_type = zif_aisdk_azoai_constants=>c_component_type-deployment ]-component_instance.
   ENDMETHOD.
 
   METHOD zif_peng_azoai_sdk~completions.
@@ -166,8 +167,8 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 * Mar 28, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 
-    _check_component_safety( component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions ).
-    completions ?= _t_subcomponents[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions ]-component_instance.
+    _check_component_safety( component_type = zif_aisdk_azoai_constants=>c_component_type-completions ).
+    completions ?= _t_subcomponents[ component_type = zif_aisdk_azoai_constants=>c_component_type-completions ]-component_instance.
   ENDMETHOD.
 
   METHOD zif_peng_azoai_sdk~files.
@@ -201,8 +202,8 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *-------------------------------------------------------------------------------------------------------------
 * Apr 5, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
-    _check_component_safety( component_type = zif_peng_azoai_sdk_constants=>c_component_type-file ).
-    files ?= _t_subcomponents[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-file ]-component_instance..
+    _check_component_safety( component_type = zif_aisdk_azoai_constants=>c_component_type-file ).
+    files ?= _t_subcomponents[ component_type = zif_aisdk_azoai_constants=>c_component_type-file ]-component_instance..
   ENDMETHOD.
 
   METHOD zif_peng_azoai_sdk~finetunes.
@@ -234,8 +235,8 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *-------------------------------------------------------------------------------------------------------------
 * Apr 5, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
-    _check_component_safety( component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning ).
-    finetunes ?= _t_subcomponents[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning ]-component_instance..
+    _check_component_safety( component_type = zif_aisdk_azoai_constants=>c_component_type-fine_tuning ).
+    finetunes ?= _t_subcomponents[ component_type = zif_aisdk_azoai_constants=>c_component_type-fine_tuning ]-component_instance..
   ENDMETHOD.
 
   METHOD zif_peng_azoai_sdk~chat_completions.
@@ -254,8 +255,8 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *-------------------------------------------------------------------------------------------------------------
 * Jun 2, 2023 // GONAIR // Initial Version
 *****************************************************************************************************************
-    _check_component_safety( component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions ).
-    chat_completions ?= _t_subcomponents[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions ]-component_instance.
+    _check_component_safety( component_type = zif_aisdk_azoai_constants=>c_component_type-chat_completions ).
+    chat_completions ?= _t_subcomponents[ component_type = zif_aisdk_azoai_constants=>c_component_type-chat_completions ]-component_instance.
   ENDMETHOD.
 
   METHOD zif_peng_azoai_sdk~embeddings.
@@ -275,8 +276,8 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *-------------------------------------------------------------------------------------------------------------
 * Jun 2, 2023 // GONAIR // Initial Version
 *****************************************************************************************************************
-    _check_component_safety( component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings ).
-    embedding ?= _t_subcomponents[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings ]-component_instance.
+    _check_component_safety( component_type = zif_aisdk_azoai_constants=>c_component_type-embeddings ).
+    embedding ?= _t_subcomponents[ component_type = zif_aisdk_azoai_constants=>c_component_type-embeddings ]-component_instance.
   ENDMETHOD.
 
 ENDCLASS.

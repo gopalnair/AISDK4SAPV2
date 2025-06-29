@@ -6,8 +6,8 @@ CLASS zcl_peng_azoai_sdk_v1_model DEFINITION
   PUBLIC SECTION.
 
     METHODS:
-      zif_peng_azoai_sdk_comp_model~get       REDEFINITION,
-      zif_peng_azoai_sdk_comp_model~list      REDEFINITION.
+      zif_aisdk_azoai_comp_model~get       REDEFINITION,
+      zif_aisdk_azoai_comp_model~list      REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
 
@@ -18,7 +18,7 @@ ENDCLASS.
 CLASS zcl_peng_azoai_sdk_v1_model IMPLEMENTATION.
 
 
-  METHOD zif_peng_azoai_sdk_comp_model~get.
+  METHOD zif_aisdk_azoai_comp_model~get.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_MODEL
 * Method         : zif_peng_azoai_sdk_comp_model~get
@@ -36,20 +36,20 @@ CLASS zcl_peng_azoai_sdk_v1_model IMPLEMENTATION.
 * Apr 7, 2023 // Gopal Nair // Initial Version
 *****************************************************************************************************************
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-get
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-get
     ).
 
     _objsdkhelper->get_httpobjs_from_uripattern(
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-get
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-get
                                                                                          )  "'{endpoint}/openai/models/{model-id}?api-version={version}'
         ivobj_config           = _objconfig
-        ivt_templatecomponents = VALUE #(  ( name = zif_peng_azoai_sdk_uripatterns=>template_ids-modelid value = iv_modelid ) ) "model ID.
+        ivt_templatecomponents = VALUE #(  ( name = zif_aisdk_azoai_uripatterns=>template_ids-modelid value = iv_modelid ) ) "model ID.
       IMPORTING
         ov_url                 = DATA(actual_url)
         ovobj_http             = DATA(lo_http)
@@ -77,7 +77,7 @@ CLASS zcl_peng_azoai_sdk_v1_model IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_peng_azoai_sdk_comp_model~list.
+  METHOD zif_aisdk_azoai_comp_model~list.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_MODEL
 * Method         : zif_peng_azoai_sdk_comp_model~list
@@ -96,17 +96,17 @@ CLASS zcl_peng_azoai_sdk_v1_model IMPLEMENTATION.
 *****************************************************************************************************************
 
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-list
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-list
     ).
 
     _objsdkhelper->get_httpobjs_from_uripattern(
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-list
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-list
                                                                                          )  "'{endpoint}/openai/models/{model-id}?api-version={version}'
         ivobj_config           = _objconfig
       IMPORTING

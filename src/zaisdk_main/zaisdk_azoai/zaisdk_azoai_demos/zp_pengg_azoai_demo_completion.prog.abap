@@ -37,7 +37,7 @@ START-OF-SELECTION.
       sdk_instance = zcl_peng_azoai_sdk_factory=>get_instance( )->get_sdk(
                                                           api_version = p_ver
                                                           api_base    = p_url
-                                                          api_type    = zif_peng_azoai_sdk_constants=>c_apitype-azure
+                                                          api_type    = zif_aisdk_azoai_constants=>c_apitype-azure
                                                           api_key     = p_key
                                                         ).
 

@@ -9,9 +9,9 @@ CLASS zcl_peng_azoai_sdk_base DEFINITION
     INTERFACES zif_peng_azoai_sdk .
   PROTECTED SECTION.
     DATA:
-      _objconfig       TYPE REF TO zif_peng_azoai_sdk_config,
+      _objconfig       TYPE REF TO zif_aisdk_azoai_config,
       _objhelper       TYPE REF TO zcl_peng_azoai_sdk_helper,
-      _t_subcomponents TYPE zif_peng_azoai_sdk_typinternal=>tty_component_init_param.
+      _t_subcomponents TYPE zif_aisdk_azoai_typinternal=>tty_component_init_param.
 
     METHODS:
       "! <p class="shorttext synchronized" lang="en">Check if a component is safe to access</p>

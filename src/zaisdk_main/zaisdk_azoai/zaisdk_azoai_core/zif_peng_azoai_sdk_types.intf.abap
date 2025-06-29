@@ -26,9 +26,9 @@ INTERFACE zif_peng_azoai_sdk_types
 * https://learn.microsoft.com/en-us/rest/api/cognitiveservices/azureopenaistable/models/get?tabs=HTTP#model
   TYPES:
     BEGIN OF ty_model_get,
-      capabilities     TYPE zif_peng_azoai_sdk_typinternal=>ty_int_mod_get_capabilities, "
+      capabilities     TYPE zif_aisdk_azoai_typinternal=>ty_int_mod_get_capabilities, "
       created_at       TYPE i,                                                           "
-      deprecation      TYPE zif_peng_azoai_sdk_typinternal=>ty_int_mod_get_deprecation,  "
+      deprecation      TYPE zif_aisdk_azoai_typinternal=>ty_int_mod_get_deprecation,  "
       fine_tune        TYPE string,
       id               TYPE string,
       lifecycle_status TYPE string,
@@ -49,12 +49,12 @@ INTERFACE zif_peng_azoai_sdk_types
   TYPES:
     BEGIN OF ty_deployments,
       created_at     TYPE i,
-      error          TYPE zif_peng_azoai_sdk_typinternal=>ty_internal_error_object,
+      error          TYPE zif_aisdk_azoai_typinternal=>ty_internal_error_object,
       id             TYPE string,
       model          TYPE string,
       object         TYPE string,
       owner          TYPE string,
-      scale_settings TYPE zif_peng_azoai_sdk_typinternal=>ty_scale_settings,
+      scale_settings TYPE zif_aisdk_azoai_typinternal=>ty_scale_settings,
       status         TYPE string,
       updated_at     TYPE i,
     END OF ty_deployments,
@@ -65,7 +65,7 @@ INTERFACE zif_peng_azoai_sdk_types
     END OF ty_deployments_list,
 
     BEGIN OF ty_deployments_create,
-      scale_settings TYPE zif_peng_azoai_sdk_typinternal=>ty_scale_settings,
+      scale_settings TYPE zif_aisdk_azoai_typinternal=>ty_scale_settings,
       model          TYPE string,
     END OF ty_deployments_create.
 
@@ -76,9 +76,9 @@ INTERFACE zif_peng_azoai_sdk_types
 
          BEGIN OF ty_embeddings_output,
            object TYPE string,
-           data   TYPE zif_peng_azoai_sdk_typinternal=>tty_embedding,
+           data   TYPE zif_aisdk_azoai_typinternal=>tty_embedding,
            model  TYPE string,
-           usage  TYPE zif_peng_azoai_sdk_typinternal=>ty_completion_resobj_usage,
+           usage  TYPE zif_aisdk_azoai_typinternal=>ty_completion_resobj_usage,
          END OF ty_embeddings_output.
 
 *********   Completions operation data types ************
@@ -101,8 +101,8 @@ INTERFACE zif_peng_azoai_sdk_types
       object  TYPE string,
       created TYPE i,
       model   TYPE string,
-      choices TYPE zif_peng_azoai_sdk_typinternal=>tty_completion_resobj_choices,
-      usage   TYPE zif_peng_azoai_sdk_typinternal=>ty_completion_resobj_usage,
+      choices TYPE zif_aisdk_azoai_typinternal=>tty_completion_resobj_choices,
+      usage   TYPE zif_aisdk_azoai_typinternal=>ty_completion_resobj_usage,
     END OF ty_completion_output.
 
 
@@ -132,17 +132,17 @@ INTERFACE zif_peng_azoai_sdk_types
       object  TYPE string,
       created TYPE i,
       model   TYPE string,
-      choices TYPE zif_peng_azoai_sdk_typinternal=>tty_chatcompl_resobj_choices,
-      usage   TYPE zif_peng_azoai_sdk_typinternal=>ty_completion_resobj_usage,
+      choices TYPE zif_aisdk_azoai_typinternal=>tty_chatcompl_resobj_choices,
+      usage   TYPE zif_aisdk_azoai_typinternal=>ty_completion_resobj_usage,
     END OF ty_chatcompletion_output.
 
 *********   File operation data types ************
   TYPES:
 
-    tty_file_upload TYPE STANDARD TABLE OF zif_peng_azoai_sdk_typinternal=>ty_int_file_upload WITH DEFAULT KEY,
+    tty_file_upload TYPE STANDARD TABLE OF zif_aisdk_azoai_typinternal=>ty_int_file_upload WITH DEFAULT KEY,
 
     BEGIN OF ty_file_get,
-      statistics TYPE zif_peng_azoai_sdk_typinternal=>ty_int_file_stats,
+      statistics TYPE zif_aisdk_azoai_typinternal=>ty_int_file_stats,
       bytes      TYPE i,
       purpose    TYPE string,
       filename   TYPE string,
@@ -167,10 +167,10 @@ INTERFACE zif_peng_azoai_sdk_types
   TYPES:
     BEGIN OF ty_finetune_result,
       created_at       TYPE i,
-      error            TYPE zif_peng_azoai_sdk_typinternal=>ty_internal_error_object,
-      events           TYPE STANDARD TABLE OF zif_peng_azoai_sdk_typinternal=>ty_int_finetune_event WITH DEFAULT KEY,
+      error            TYPE zif_aisdk_azoai_typinternal=>ty_internal_error_object,
+      events           TYPE STANDARD TABLE OF zif_aisdk_azoai_typinternal=>ty_int_finetune_event WITH DEFAULT KEY,
       fine_tuned_model TYPE string,
-      hyperparams      TYPE zif_peng_azoai_sdk_typinternal=>ty_int_finetune_hyperparams,
+      hyperparams      TYPE zif_aisdk_azoai_typinternal=>ty_int_finetune_hyperparams,
       id               TYPE string,
       model            TYPE string,
       object           TYPE string,
@@ -200,7 +200,7 @@ INTERFACE zif_peng_azoai_sdk_types
     END OF ty_finetune_create,
 
     BEGIN OF ty_finetune_events,
-      data   TYPE STANDARD TABLE OF zif_peng_azoai_sdk_typinternal=>ty_int_finetune_event WITH DEFAULT KEY,
+      data   TYPE STANDARD TABLE OF zif_aisdk_azoai_typinternal=>ty_int_finetune_event WITH DEFAULT KEY,
       object TYPE string,
     END OF ty_finetune_events,
 
@@ -213,7 +213,7 @@ INTERFACE zif_peng_azoai_sdk_types
 *https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses
   TYPES:
     BEGIN OF ty_error,
-      error TYPE zif_peng_azoai_sdk_typinternal=>ty_internal_error_object,
+      error TYPE zif_aisdk_azoai_typinternal=>ty_internal_error_object,
     END OF ty_error,
     tty_error TYPE STANDARD TABLE OF ty_error.
 

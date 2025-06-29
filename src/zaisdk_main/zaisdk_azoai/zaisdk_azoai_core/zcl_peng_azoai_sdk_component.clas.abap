@@ -5,13 +5,13 @@ CLASS zcl_peng_azoai_sdk_component DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_sdk_component .
+    INTERFACES zif_aisdk_azoai_component .
   PROTECTED SECTION.
     DATA:
       _objsdkhelper TYPE REF TO zcl_peng_azoai_sdk_helper.
 
     DATA:
-      _objconfig      TYPE REF TO zif_peng_azoai_sdk_config,
+      _objconfig      TYPE REF TO zif_aisdk_azoai_config,
       _objsdk         TYPE REF TO zif_peng_azoai_sdk,
       _component_type TYPE string.    " see : zif_peng_azoai_sdk_constants=>c_component_type
 
@@ -30,7 +30,7 @@ ENDCLASS.
 
 
 CLASS zcl_peng_azoai_sdk_component IMPLEMENTATION.
-  METHOD zif_peng_azoai_sdk_component~initialize_component.
+  METHOD zif_aisdk_azoai_component~initialize_component.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_COMPONENT
 * Method         : zif_peng_azoai_sdk_component~initialize_component
@@ -52,9 +52,9 @@ CLASS zcl_peng_azoai_sdk_component IMPLEMENTATION.
 *   Set up helper
         _objsdkhelper   =  zcl_peng_azoai_sdk_helper=>get_instance( ).
 *   Set up config layer.
-        _objconfig      ?=  component_set[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-config ]-component_instance.
+        _objconfig      ?=  component_set[ component_type = zif_aisdk_azoai_constants=>c_component_type-config ]-component_instance.
 *   Set up loop back to SDK parent object.
-        _objsdk         ?=  component_set[ component_type = zif_peng_azoai_sdk_constants=>c_component_type-sdk ]-component_instance.
+        _objsdk         ?=  component_set[ component_type = zif_aisdk_azoai_constants=>c_component_type-sdk ]-component_instance.
 
       CATCH cx_root.
         RAISE EXCEPTION TYPE zcx_peng_azoai_sdk_exception

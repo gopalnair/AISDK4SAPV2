@@ -5,7 +5,7 @@ CLASS zcl_peng_ai_sdk_chatcompl_base DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_ai_sdk_comp_chatcompl.
+    INTERFACES zif_aisdk_comp_chatcompl.
     METHODS constructor.
 
   PROTECTED SECTION.
@@ -19,12 +19,12 @@ CLASS zcl_peng_ai_sdk_chatcompl_base IMPLEMENTATION.
   METHOD constructor.
 
     super->constructor( ).
-    _component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions.
+    _component_type = zif_aisdk_azoai_constants=>c_component_type-chat_completions.
   ENDMETHOD.
 
 
 
-  METHOD zif_peng_ai_sdk_comp_chatcompl~create.
+  METHOD zif_aisdk_comp_chatcompl~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AI_SDK_CHATCOMPL_BASE
 * Method         : zif_peng_ai_sdk_comp_chatcompl~create

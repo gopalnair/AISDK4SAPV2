@@ -4,7 +4,7 @@ CLASS zcl_peng_azoai_centralcontrol DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_peng_azoai_centralcontrol .
+    INTERFACES zif_aisdk_centralcontrol .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 CLASS zcl_peng_azoai_centralcontrol IMPLEMENTATION.
-  METHOD zif_peng_azoai_centralcontrol~start_sdk.
+  METHOD zif_aisdk_centralcontrol~start_sdk.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_CENTRALCONTROL
 * Method         : zif_peng_azoai_centralcontrol~start_sdk
@@ -31,7 +31,7 @@ CLASS zcl_peng_azoai_centralcontrol IMPLEMENTATION.
 
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_centralcontrol~initialize_sdkcomponent.
+  METHOD zif_aisdk_centralcontrol~initialize_sdkcomponent.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_CENTRALCONTROL
 * Method         : zif_peng_azoai_centralcontrol~initialize_sdkcomponent
@@ -57,7 +57,7 @@ CLASS zcl_peng_azoai_centralcontrol IMPLEMENTATION.
 
   ENDMETHOD.
 
-  METHOD zif_peng_azoai_centralcontrol~perform_operation.
+  METHOD zif_aisdk_centralcontrol~perform_operation.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_CENTRALCONTROL
 * Method         : zif_peng_azoai_centralcontrol~perform_operation

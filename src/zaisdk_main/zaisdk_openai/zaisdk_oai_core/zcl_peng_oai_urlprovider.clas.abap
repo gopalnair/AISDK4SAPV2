@@ -56,39 +56,39 @@ CLASS zcl_peng_oai_urlprovider IMPLEMENTATION.
                                       version = _version
 
                                       "MODEL component - Open AI
-                                      component_type = zif_peng_azoai_sdk_constants=>c_component_type-model
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-list           access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-model-list )         "Model - List
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-get            access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-model-get  )         "Model - Get
+                                      component_type = zif_aisdk_azoai_constants=>c_component_type-model
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-list           access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-model-list )         "Model - List
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-get            access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-model-get  )         "Model - Get
 
                                       "FILES component  - Azure Open AI
-                                      component_type = zif_peng_azoai_sdk_constants=>c_component_type-file
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-list           access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-list  )        "File - List
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-upload         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-upload )       "File - Upload
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-delete         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-delete  )      "File - Delete
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-get            access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-get  )         "File - Get
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-get_content    access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-get_content )  "File - Get Content
+                                      component_type = zif_aisdk_azoai_constants=>c_component_type-file
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-list           access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-list  )        "File - List
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-upload         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-upload )       "File - Upload
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-delete         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-delete  )      "File - Delete
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-get            access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-get  )         "File - Get
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-get_content    access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-files-get_content )  "File - Get Content
 
                                       "FINETUNES component  - Azure Open AI
-                                      component_type = zif_peng_azoai_sdk_constants=>c_component_type-fine_tuning
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-create         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-create )   "FineTunes - Create
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-list           access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-list  )    "FineTunes - List
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-get            access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-get  )     "FineTunes - Get
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-cancel         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-cancel )   "FineTunes - Cancel
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-get_events     access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-events )   "FineTunes - Events
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-delete         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-delete  )  "FineTunes - Delete
+                                      component_type = zif_aisdk_azoai_constants=>c_component_type-fine_tuning
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-create         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-create )   "FineTunes - Create
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-list           access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-list  )    "FineTunes - List
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-get            access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-get  )     "FineTunes - Get
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-cancel         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-cancel )   "FineTunes - Cancel
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-get_events     access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-events )   "FineTunes - Events
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-delete         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-finetunes-delete  )  "FineTunes - Delete
 
 
                                       "EMBEDDINGS component - Azure Open AI
-                                      component_type = zif_peng_azoai_sdk_constants=>c_component_type-embeddings
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-create access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-embeddings-create )
+                                      component_type = zif_aisdk_azoai_constants=>c_component_type-embeddings
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-create access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-embeddings-create )
 
                                       "COMPLETIONS (GPT-3) component - Azure Open AI
-                                      component_type = zif_peng_azoai_sdk_constants=>c_component_type-completions
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-create         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-completions-create )
+                                      component_type = zif_aisdk_azoai_constants=>c_component_type-completions
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-create         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-completions-create )
 
                                       "CHAT COMPLETIONS (GPT-4) component - Azure Open AI
-                                      component_type = zif_peng_azoai_sdk_constants=>c_component_type-chat_completions
-                                      ( operation = zif_peng_azoai_sdk_constants=>c_component_operations-create         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-chat_completions-create )
+                                      component_type = zif_aisdk_azoai_constants=>c_component_type-chat_completions
+                                      ( operation = zif_aisdk_azoai_constants=>c_component_operations-create         access_url = zif_peng_oai_sdk_uripatterns=>version_v1_endpoint-chat_completions-create )
                                     ).
   ENDMETHOD.
 

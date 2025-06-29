@@ -1,4 +1,4 @@
-INTERFACE zif_peng_azoai_sdk_comp_model
+INTERFACE zif_aisdk_azoai_comp_model
   PUBLIC .
 
 

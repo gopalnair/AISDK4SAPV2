@@ -1,5 +1,5 @@
-"! <p class="shorttext synchronized" lang="en">MSPENG: Azure Open AI SDK - Completions Component</p>
-INTERFACE zif_peng_azoai_sdk_comp_compl
+"! <p class="shorttext synchronized" lang="en">AISDK: Azure Open AI SDK - Completions Component</p>
+INTERFACE zif_aisdk_azoai_comp_compl
   PUBLIC .
 
 *  INTERFACES zif_peng_azoai_sdk_component .

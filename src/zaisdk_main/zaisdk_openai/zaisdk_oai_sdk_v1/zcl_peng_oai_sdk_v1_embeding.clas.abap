@@ -4,7 +4,7 @@ CLASS zcl_peng_oai_sdk_v1_embeding DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-    METHODS zif_peng_azoai_sdk_comp_embed~create REDEFINITION.
+    METHODS zif_aisdk_azoai_comp_embed~create REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 CLASS zcl_peng_oai_sdk_v1_embeding IMPLEMENTATION.
-  METHOD zif_peng_azoai_sdk_comp_embed~create.
+  METHOD zif_aisdk_azoai_comp_embed~create.
 *****************************************************************************************************************
 * Class          : ZCL_PENG_AZOAI_SDK_V1_EMBEDING
 * Method         : zif_peng_azoai_sdk_comp_embed~create
@@ -40,10 +40,10 @@ CLASS zcl_peng_oai_sdk_v1_embeding IMPLEMENTATION.
 
 
 *   Check if the operation is permitted for the run profile by asking profile handler.
-    _objconfig->get_runprofile_handler( )->zif_peng_azoai_centralcontrol~perform_operation(
+    _objconfig->get_runprofile_handler( )->zif_aisdk_centralcontrol~perform_operation(
       EXPORTING
         component_type = _component_type
-        operation      = zif_peng_azoai_sdk_constants=>c_component_operations-create
+        operation      = zif_aisdk_azoai_constants=>c_component_operations-create
     ).
 
 * Get the actual URL and HTTP communication objects from helper layer.
@@ -51,7 +51,7 @@ CLASS zcl_peng_oai_sdk_v1_embeding IMPLEMENTATION.
       EXPORTING
         uri_pattern            = _objconfig->get_accesspoint_provider( )->get_urltemplate(
                                                                                             component = _component_type
-                                                                                            operation = zif_peng_azoai_sdk_constants=>c_component_operations-create
+                                                                                            operation = zif_aisdk_azoai_constants=>c_component_operations-create
                                                                                          )
         ivobj_config           = _objconfig
       IMPORTING
