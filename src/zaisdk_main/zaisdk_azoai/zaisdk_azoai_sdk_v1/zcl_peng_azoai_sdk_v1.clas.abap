@@ -64,7 +64,6 @@ CLASS zcl_peng_azoai_sdk_v1 IMPLEMENTATION.
 *   Additionally, the SDK component itself is sent in, so that cross access is possible through the SDK object bridge. So, if for advanced
 *   and value added use cases, we need to access deployments from model component, we can easily bridge through the sdk object. Having said that,
 *   This will not be used during initial phase of the SDK development, but will be, based on use cases/ideas/brainstorming/feature requests once the base SDK matures.
-        BREAK developer.
         _t_subcomponents = _objhelper->get_components_for_version(
                              api_type    = _objconfig->get_apitype( )
                              api_version = _objconfig->get_apiversion(  )
